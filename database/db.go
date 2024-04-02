@@ -2,11 +2,11 @@ package database
 
 import (
 	"fmt"
-	"log"
 	"github.com/Techbite-sudo/MediTrack-Backend/config"
 	"github.com/Techbite-sudo/MediTrack-Backend/models"
 	"gorm.io/driver/sqlserver"
 	"gorm.io/gorm"
+	"log"
 )
 
 var DB *gorm.DB

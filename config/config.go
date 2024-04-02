@@ -2,7 +2,7 @@ package config
 
 import (
 	"fmt"
-	"os"
+	// "os"
 )
 
 type Config struct {
@@ -14,11 +14,16 @@ type Config struct {
 }
 
 func LoadConfig() (*Config, error) {
-	dbHost := os.Getenv("DB_HOST")
-	dbPort := os.Getenv("DB_PORT")
-	dbUser := os.Getenv("DB_USER")
-	dbPassword := os.Getenv("DB_PASSWORD")
-	dbName := os.Getenv("DB_NAME")
+	// dbHost := os.Getenv("DB_HOST")
+	// dbPort := os.Getenv("DB_PORT")
+	// dbUser := os.Getenv("DB_USER")
+	// dbPassword := os.Getenv("DB_PASSWORD")
+	// dbName := os.Getenv("DB_NAME")
+	dbHost := "localhost"
+	dbPort := "3306"
+	dbUser := "Techbite"
+	dbPassword := "Bonaventure1"
+	dbName := "MediTrack"
 
 	if dbHost == "" || dbPort == "" || dbUser == "" || dbPassword == "" || dbName == "" {
 		return nil, fmt.Errorf("one or more database configuration values are missing")
