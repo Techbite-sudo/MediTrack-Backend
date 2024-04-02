@@ -7,7 +7,11 @@ import (
 
 	"github.com/99designs/gqlgen/graphql/handler"
 	"github.com/99designs/gqlgen/graphql/playground"
+	"github.com/Techbite-sudo/MediTrack-Backend/config"
+	"github.com/Techbite-sudo/MediTrack-Backend/database"
 	"github.com/Techbite-sudo/MediTrack-Backend/graph"
+	"github.com/Techbite-sudo/MediTrack-Backend/database/migrations"
+
 )
 
 const defaultPort = "8080"
@@ -17,6 +21,18 @@ func main() {
 	if port == "" {
 		port = defaultPort
 	}
+
+	cfg, err := config.LoadConfig()
+	if err != nil {
+		log.Fatalf("Error loading configuration: %v", err)
+	}
+
+	err = database.ConnectDB(cfg)
+	if err != nil {
+		log.Fatalf("Error connecting to database: %v", err)
+	}
+
+	migrations.Migrate()
 
 	srv := handler.NewDefaultServer(graph.NewExecutableSchema(graph.Config{Resolvers: &graph.Resolver{}}))
 

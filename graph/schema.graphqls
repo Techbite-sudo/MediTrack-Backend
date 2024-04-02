@@ -1,28 +1,73 @@
 # GraphQL schema example
-#
 # https://gqlgen.com/getting-started/
-
-type Todo {
-  id: ID!
-  text: String!
-  done: Boolean!
-  user: User!
-}
 
 type User {
   id: ID!
   name: String!
+  email: String!
+  phone: String
+  address: String
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Medication {
+  id: ID!
+  name: String!
+  description: String!
+  stock: Int!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type OrderItem {
+  id: ID!
+  medicationId: ID!
+  medication: Medication!
+  quantity: Int!
+  price: Float!
+}
+
+type Order {
+  id: ID!
+  userId: ID!
+  user: User!
+  items: [OrderItem!]!
+  total: Float!
+  status: String!
+  createdAt: String!
+  updatedAt: String!
 }
 
 type Query {
-  todos: [Todo!]!
-}
-
-input NewTodo {
-  text: String!
-  userId: String!
+  FetchUsers: [User!]!
+  FetchUser(id: ID!): User
+  FetchMedications: [Medication!]!
+  FetchMedication(id: ID!): Medication
+  FetchOrders: [Order!]!
+  FetchOrder(id: ID!): Order
 }
 
 type Mutation {
-  createTodo(input: NewTodo!): Todo!
+  createUser(input: CreateUserInput!): User!
+  updateUser(id: ID!, input: UpdateUserInput): User!
+  createOrder(userId: ID!, items: [OrderItemInput!]!): Order!
+}
+
+input CreateUserInput {
+  name: String!
+  email: String!
+  password: String!
+}
+
+input UpdateUserInput {
+  name: String
+  email: String
+  phone: String
+  address: String
+}
+
+input OrderItemInput {
+  medicationId: ID!
+  quantity: Int!
 }

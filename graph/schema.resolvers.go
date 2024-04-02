@@ -11,14 +11,49 @@ import (
 	"github.com/Techbite-sudo/MediTrack-Backend/graph/model"
 )
 
-// CreateTodo is the resolver for the createTodo field.
-func (r *mutationResolver) CreateTodo(ctx context.Context, input model.NewTodo) (*model.Todo, error) {
-	panic(fmt.Errorf("not implemented: CreateTodo - createTodo"))
+// CreateUser is the resolver for the createUser field.
+func (r *mutationResolver) CreateUser(ctx context.Context, input model.CreateUserInput) (*model.User, error) {
+	panic(fmt.Errorf("not implemented: CreateUser - createUser"))
 }
 
-// Todos is the resolver for the todos field.
-func (r *queryResolver) Todos(ctx context.Context) ([]*model.Todo, error) {
-	panic(fmt.Errorf("not implemented: Todos - todos"))
+// UpdateUser is the resolver for the updateUser field.
+func (r *mutationResolver) UpdateUser(ctx context.Context, id string, input *model.UpdateUserInput) (*model.User, error) {
+	panic(fmt.Errorf("not implemented: UpdateUser - updateUser"))
+}
+
+// CreateOrder is the resolver for the createOrder field.
+func (r *mutationResolver) CreateOrder(ctx context.Context, userID string, items []*model.OrderItemInput) (*model.Order, error) {
+	panic(fmt.Errorf("not implemented: CreateOrder - createOrder"))
+}
+
+// FetchUsers is the resolver for the FetchUsers field.
+func (r *queryResolver) FetchUsers(ctx context.Context) ([]*model.User, error) {
+	panic(fmt.Errorf("not implemented: FetchUsers - FetchUsers"))
+}
+
+// FetchUser is the resolver for the FetchUser field.
+func (r *queryResolver) FetchUser(ctx context.Context, id string) (*model.User, error) {
+	panic(fmt.Errorf("not implemented: FetchUser - FetchUser"))
+}
+
+// FetchMedications is the resolver for the FetchMedications field.
+func (r *queryResolver) FetchMedications(ctx context.Context) ([]*model.Medication, error) {
+	panic(fmt.Errorf("not implemented: FetchMedications - FetchMedications"))
+}
+
+// FetchMedication is the resolver for the FetchMedication field.
+func (r *queryResolver) FetchMedication(ctx context.Context, id string) (*model.Medication, error) {
+	panic(fmt.Errorf("not implemented: FetchMedication - FetchMedication"))
+}
+
+// FetchOrders is the resolver for the FetchOrders field.
+func (r *queryResolver) FetchOrders(ctx context.Context) ([]*model.Order, error) {
+	panic(fmt.Errorf("not implemented: FetchOrders - FetchOrders"))
+}
+
+// FetchOrder is the resolver for the FetchOrder field.
+func (r *queryResolver) FetchOrder(ctx context.Context, id string) (*model.Order, error) {
+	panic(fmt.Errorf("not implemented: FetchOrder - FetchOrder"))
 }
 
 // Mutation returns MutationResolver implementation.
