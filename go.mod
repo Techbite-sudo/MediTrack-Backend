@@ -5,7 +5,6 @@ go 1.20
 require (
 	github.com/99designs/gqlgen v0.17.45
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
-	github.com/satori/go.uuid v1.2.0
 	github.com/vektah/gqlparser/v2 v2.5.11
 	golang.org/x/crypto v0.12.0
 	gorm.io/driver/mysql v1.5.6

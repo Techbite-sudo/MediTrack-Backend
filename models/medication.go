@@ -1,12 +1,12 @@
+// medication.go
 package models
 
 import (
 	"time"
-	uuid "github.com/satori/go.uuid"
 )
 
 type Medication struct {
-	ID          uuid.UUID `gorm:"type:uuid;primary_key;"`
+	ID          string    `gorm:"primaryKey" json:"id"`
 	Name        string    `json:"name"`
 	Description string    `json:"description"`
 	Stock       int       `json:"stock"`

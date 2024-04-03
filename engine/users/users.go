@@ -1,19 +1,23 @@
 package users
 
 import (
-	"time"
 	"github.com/Techbite-sudo/MediTrack-Backend/database"
 	"github.com/Techbite-sudo/MediTrack-Backend/graph/model"
+	"github.com/google/uuid"
+	"time"
 )
 
 func CreateUser(input model.CreateUserInput) (*model.User, error) {
+	
+	id := uuid.New()
+
 	user := model.User{
-		Name:     input.Name,
-		Email:    input.Email,
-		Password: input.Password,
+		ID:        id.String(),
+		Name:      input.Name,
+		Email:     input.Email,
+		Password:  input.Password,
 		CreatedAt: time.Now(),
 		UpdatedAt: time.Now(),
-		// Set other fields as needed
 	}
 	err := database.DB.Create(&user).Error
 	if err != nil {
@@ -40,7 +44,7 @@ func UpdateUser(id string, input *model.UpdateUserInput) (*model.User, error) {
 	if input.Address != nil && *input.Address != "" {
 		user.Address = input.Address
 	}
-	
+
 	err = database.DB.Save(&user).Error
 	if err != nil {
 		return nil, err
@@ -48,7 +52,7 @@ func UpdateUser(id string, input *model.UpdateUserInput) (*model.User, error) {
 	return &user, nil
 }
 
-func FetchUsers() ([]*model.User, error){
+func FetchUsers() ([]*model.User, error) {
 	var users []*model.User
 	err := database.DB.Find(&users).Error
 	if err != nil {
@@ -58,7 +62,7 @@ func FetchUsers() ([]*model.User, error){
 
 }
 
-func FetchUser(id string) (*model.User, error){
+func FetchUser(id string) (*model.User, error) {
 	var user model.User
 	err := database.DB.Where("id = ?", id).First(&user).Error
 	if err != nil {
