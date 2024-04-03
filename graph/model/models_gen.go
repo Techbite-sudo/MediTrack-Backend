@@ -2,6 +2,10 @@
 
 package model
 
+import (
+	"time"
+)
+
 type CreateUserInput struct {
 	Name     string `json:"name"`
 	Email    string `json:"email"`
@@ -9,12 +13,12 @@ type CreateUserInput struct {
 }
 
 type Medication struct {
-	ID          string `json:"id"`
-	Name        string `json:"name"`
-	Description string `json:"description"`
-	Stock       int    `json:"stock"`
-	CreatedAt   string `json:"createdAt"`
-	UpdatedAt   string `json:"updatedAt"`
+	ID          string    `json:"id"`
+	Name        string    `json:"name"`
+	Description string    `json:"description"`
+	Stock       int       `json:"stock"`
+	CreatedAt   time.Time `json:"createdAt"`
+	UpdatedAt   time.Time `json:"updatedAt"`
 }
 
 type Mutation struct {
@@ -27,8 +31,8 @@ type Order struct {
 	Items     []*OrderItem `json:"items"`
 	Total     float64      `json:"total"`
 	Status    string       `json:"status"`
-	CreatedAt string       `json:"createdAt"`
-	UpdatedAt string       `json:"updatedAt"`
+	CreatedAt time.Time    `json:"createdAt"`
+	UpdatedAt time.Time    `json:"updatedAt"`
 }
 
 type OrderItem struct {
@@ -55,12 +59,12 @@ type UpdateUserInput struct {
 }
 
 type User struct {
-	ID        string  `json:"id"`
-	Name      string  `json:"name"`
-	Email     string  `json:"email"`
-	Password  string  `json:"password"`
-	Phone     *string `json:"phone,omitempty"`
-	Address   *string `json:"address,omitempty"`
-	CreatedAt string  `json:"createdAt"`
-	UpdatedAt string  `json:"updatedAt"`
+	ID        string    `json:"id"`
+	Name      string    `json:"name"`
+	Email     string    `json:"email"`
+	Password  string    `json:"password"`
+	Phone     *string   `json:"phone,omitempty"`
+	Address   *string   `json:"address,omitempty"`
+	CreatedAt time.Time `json:"createdAt"`
+	UpdatedAt time.Time `json:"updatedAt"`
 }

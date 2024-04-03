@@ -2,11 +2,12 @@ package models
 
 import (
 	"time"
+	uuid "github.com/satori/go.uuid"
 )
 
 type Order struct {
-	ID        uint        `gorm:"primary_key" json:"id"`
-	UserID    uint        `json:"userId"`
+	ID        uuid.UUID `gorm:"type:uuid;primary_key;"`
+	UserID    uuid.UUID `gorm:"type:uuid"`
 	User      User        `gorm:"foreignKey:UserID" json:"user"`
 	Items     []OrderItem `gorm:"foreignKey:OrderID" json:"items"`
 	Total     float64     `json:"total"`
@@ -16,9 +17,9 @@ type Order struct {
 }
 
 type OrderItem struct {
-	ID           uint       `gorm:"primary_key" json:"id"`
-	OrderID      uint       `json:"orderId"`
-	MedicationID uint       `json:"medicationId"`
+	ID        uuid.UUID `gorm:"type:uuid;primary_key;"`
+	OrderID      uuid.UUID `gorm:"type:uuid"`
+	MedicationID uuid.UUID `gorm:"type:uuid"`
 	Medication   Medication `gorm:"foreignKey:MedicationID" json:"medication"`
 	Quantity     int        `json:"quantity"`
 	Price        float64    `json:"price"`

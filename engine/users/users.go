@@ -1,6 +1,7 @@
 package users
 
 import (
+	"time"
 	"github.com/Techbite-sudo/MediTrack-Backend/database"
 	"github.com/Techbite-sudo/MediTrack-Backend/graph/model"
 )
@@ -10,6 +11,8 @@ func CreateUser(input model.CreateUserInput) (*model.User, error) {
 		Name:     input.Name,
 		Email:    input.Email,
 		Password: input.Password,
+		CreatedAt: time.Now(),
+		UpdatedAt: time.Now(),
 		// Set other fields as needed
 	}
 	err := database.DB.Create(&user).Error

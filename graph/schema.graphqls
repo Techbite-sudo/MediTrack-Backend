@@ -1,28 +1,32 @@
-# GraphQL schema example
-# https://gqlgen.com/getting-started/
+directive @goField(
+  forceResolver: Boolean
+  name: String
+) on INPUT_FIELD_DEFINITION | FIELD_DEFINITION
+
+scalar Time
 
 type User {
-  id: ID!
+  id: String!
   name: String!
   email: String!
   password: String!
   phone: String
   address: String
-  createdAt: String!
-  updatedAt: String!
+  createdAt: Time!
+  updatedAt: Time!
 }
 
 type Medication {
-  id: ID!
+  id: String!
   name: String!
   description: String!
   stock: Int!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: Time!
+  updatedAt: Time!
 }
 
 type OrderItem {
-  id: ID!
+  id: String!
   medicationId: ID!
   medication: Medication!
   quantity: Int!
@@ -30,14 +34,14 @@ type OrderItem {
 }
 
 type Order {
-  id: ID!
+  id: String!
   userId: ID!
   user: User!
   items: [OrderItem!]!
   total: Float!
   status: String!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: Time!
+  updatedAt: Time!
 }
 
 type Query {
@@ -69,6 +73,6 @@ input UpdateUserInput {
 }
 
 input OrderItemInput {
-  medicationId: ID!
+  medicationId: String!
   quantity: Int!
 }
